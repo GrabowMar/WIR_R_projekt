@@ -1,0 +1,20 @@
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \pie[
+            radius=3, 
+            color={gray, brown, green, blue, yellow},
+            text=legend,
+            sum=100,
+            after number=\%
+        ]{
+            33.4/{\tiny Elektrownie cieplne oparte na węglu kamiennym},
+            11.9/{\tiny Elektrownie cieplne oparte na węglu brunatnym},
+            8.4/{\tiny Elektrownie gazowe},
+            3.7/{\tiny Elektrownie wodne},
+            42.5/{\tiny Elektrownie wiatrowe i inne odnawialne}
+        }
+    \end{tikzpicture}
+    \vspace{-12pt}
+    \caption{Struktura mocy zainstalowanej w Polsce na 31.12.2024}
+\end{figure}

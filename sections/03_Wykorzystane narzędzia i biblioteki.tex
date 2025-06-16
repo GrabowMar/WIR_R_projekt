@@ -1,0 +1,191 @@
+% Wykorzystane narzędzia i biblioteki
+\section{Wykorzystane narzędzia i biblioteki}
+
+\begin{frame}{Metodologia pracy z danymi}
+    \begin{enumerate}
+        \item \highlight{Pozyskanie danych} z oficjalnych źródeł europejskich i krajowych
+        \vspace{0.3em}
+        
+        \item \highlight{Przetwarzanie i analiza} za pomocą narzędzi programistycznych Python
+        \vspace{0.3em}
+        
+        \item \highlight{Wizualizacja wyników} w postaci wykresów, map i tabel porównawczych
+        \vspace{0.3em}
+        
+        \item \highlight{Prezentacja wyników} w profesjonalnym układzie LaTeX
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Główne narzędzia analizy danych}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=false, sep=10pt]{block body}
+                \textbf{\large Python - analiza danych}
+                \vspace{0.3cm}
+                
+                \begin{itemize}
+                    \item \textbf{pandas} -- manipulacja danych tabelarycznych
+                    \item \textbf{numpy} -- obliczenia numeryczne i statystyczne
+                    \item \textbf{matplotlib} -- tworzenie wykresów i wizualizacji
+                    \item \textbf{cartopy} -- mapy geograficzne i projekcje
+                \end{itemize}
+            \end{beamercolorbox}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=false, sep=10pt]{block body}
+                \textbf{\large LaTeX - skład dokumentów}
+                \vspace{0.3cm}
+                
+                \begin{itemize}
+                    \item \textbf{beamer} -- prezentacje naukowe
+                    \item \textbf{tikz} -- diagramy i schematy
+                    \item \textbf{booktabs} -- profesjonalne tabele
+                    \item \textbf{motyw Argüelles} -- nowoczesny design
+                \end{itemize}
+            \end{beamercolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Przepływ pracy -- od danych do prezentacji}
+    \begin{center}
+        \begin{tikzpicture}
+            % Data sources
+            \node[draw, rounded corners, fill=renewable!20, text width=2.5cm, align=center, minimum height=1.2cm] (data) at (0,0) {
+                \textbf{Źródła danych}\\
+                \footnotesize Eurostat, PSE, EDGAR
+            };
+            
+            % Processing
+            \node[draw, rounded corners, fill=blue!20, text width=2.5cm, align=center, minimum height=1.2cm] (process) at (4,0) {
+                \textbf{Przetwarzanie}\\
+                \footnotesize Python, pandas
+            };
+            
+            % Visualization
+            \node[draw, rounded corners, fill=orange!20, text width=2.5cm, align=center, minimum height=1.2cm] (viz) at (8,0) {
+                \textbf{Wizualizacja}\\
+                \footnotesize matplotlib, cartopy
+            };
+            
+            % Output
+            \node[draw, rounded corners, fill=purple!20, text width=2.5cm, align=center, minimum height=1.2cm] (output) at (12,0) {
+                \textbf{Prezentacja}\\
+                \footnotesize LaTeX, beamer
+            };
+            
+            % Arrows
+            \draw[->, thick, renewable] (data) -- (process);
+            \draw[->, thick, renewable] (process) -- (viz);
+            \draw[->, thick, renewable] (viz) -- (output);
+            
+            % Labels
+            \node[below=0.5cm of data, font=\tiny] {CSV, JSON};
+            \node[below=0.5cm of process, font=\tiny] {analiza, czyszczenie};
+            \node[below=0.5cm of viz, font=\tiny] {wykresy, mapy};
+            \node[below=0.5cm of output, font=\tiny] {PDF};
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{itemize}
+        \item Proces w pełni automatyczny i reprodukowalny
+        \item Kontrola wersji za pomocą Git i GitHub
+        \item Współpraca zespołowa przez Overleaf
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wykorzystane biblioteki Python}
+    \begin{table}
+        \centering
+        \footnotesize
+        \begin{tabular}{llp{6cm}}
+            \toprule
+            \textbf{Biblioteka} & \textbf{Wersja} & \textbf{Zastosowanie} \\
+            \midrule
+            pandas & 2.0+ & Manipulacja danymi tabelarycznymi, analiza szeregów czasowych \\
+            numpy & 1.24+ & Obliczenia numeryczne, operacje na macierzach \\
+            matplotlib & 3.7+ & Tworzenie wykresów słupkowych, liniowych i kołowych \\
+            cartopy & 0.21+ & Mapy geograficzne, projekcje kartograficzne \\
+            scipy & 1.10+ & Analiza statystyczna, testy korelacji \\
+            pathlib & -- & Zarządzanie ścieżkami plików \\
+            \bottomrule
+        \end{tabular}
+        \caption{Kluczowe biblioteki wykorzystane w projekcie}
+    \end{table}
+    
+    \vspace{0.3cm}
+    
+    \begin{itemize}
+        \item Wszystkie biblioteki w aktualnych wersjach stabilnych
+        \item Kompatybilność z Python 3.9+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Środowisko pracy i narzędzia wspomagające}
+    \begin{columns}[T]
+        \begin{column}{\textwidth}
+            \begin{table}[h]
+                \footnotesize
+                \begin{tabular}{lp{8cm}}
+                    \toprule
+                    \textbf{Kategoria} & \textbf{Narzędzia} \\
+                    \midrule
+                    Edytory kodu & VS Code, Jupyter Lab, PyCharm \\
+                    Kontrola wersji & Git, GitHub \\
+                    Współpraca & Overleaf (LaTeX), Google Drive \\
+                    Środowisko Python & conda, pip, virtual environments \\
+                    Asystenci AI & Claude \\
+                    Testowanie & pytest, unittest \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{itemize}
+        \item \highlight{Overleaf} umożliwił efektywną współpracę przy tworzeniu prezentacji
+        \item \highlight{Asystenci AI} przyspieszyły proces programowania i debugowania
+        \item \highlight{GitHub} zapewnił pełną kontrolę wersji kodu i danych
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Struktura projektu}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{data/} -- surowe dane z Eurostat, PSE, EDGAR
+                \item \textbf{scripts/} -- skrypty Python do analizy
+                \item \textbf{outputs/} -- wygenerowane wykresy i tabele
+                \item \textbf{presentation/} -- kod LaTeX prezentacji
+                \item \textbf{docs/} -- dokumentacja metodologii
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.4\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=false, sep=8pt]{block body}
+                \textbf{Statystyki projektu:}
+                \vspace{0.2cm}
+                
+                \begin{tabular}{lr}
+                    Pliki Python: & 12 \\
+                    Linie kodu: & 1,800+ \\
+                    Wykresy: & 15 \\
+                    Tabele: & 8 \\
+                    Slajdy: & 25+ \\
+                \end{tabular}
+            \end{beamercolorbox}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    
+    \begin{itemize}
+        \item Projekt w pełni \highlight{reprodukowalny} -- każdy wynik można odtworzyć
+        \item Kod dostępny w repozytorium GitHub z pełną dokumentacją
+    \end{itemize}
+\end{frame}

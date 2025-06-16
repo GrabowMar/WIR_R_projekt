@@ -1,0 +1,21 @@
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+width=0.95\textwidth,
+    ybar,
+    bar width=20pt,
+    enlargelimits=0.15,
+    ylabel={Wartość},
+    xlabel={Rok},
+    symbolic x coords={2020, 2021, 2022, 2023, 2024},
+    xtick=data,
+    ymin=0,
+    ymax=1,
+    nodes near coords,
+    nodes near coords align={vertical},
+]
+\addplot coordinates {(2020,0.66) (2021,0.71) (2022,0.72) (2023,0.89) (2024,0.98)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}

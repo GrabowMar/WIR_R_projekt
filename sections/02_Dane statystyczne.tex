@@ -1,0 +1,106 @@
+\section{Dane statystyczne}
+
+
+\begin{frame}{Główne źródła danych}
+    \begin{center}
+        \begin{tikzpicture}
+            % PSE Node
+            \node[draw, rounded corners, fill=green!10, text width=3.5cm, align=center, minimum height=2.5cm] (pse) at (-4,0) {
+                \textbf{PSE}\\
+                \small{Polskie Sieci Elektroenergetyczne}\\[0.4cm]
+                \footnotesize{Państwowy operator}\\
+                \footnotesize{systemu przesyłowego}\\
+                \footnotesize{w Polsce}
+            };
+            
+            % EDGAR Node
+            \node[draw, rounded corners, fill=blue!10, text width=3.5cm, align=center, minimum height=2.5cm] (edgar) at (0,0) {
+                \textbf{EDGAR}\\
+                \small{European Commission}\\[0.4cm]
+                \footnotesize{Globalna baza danych}\\
+                \footnotesize{emisji atmosferycznych}\\
+                \footnotesize{JRC EC}
+            };
+            
+            % Eurostat Node
+            \node[draw, rounded corners, fill=red!10, text width=3.5cm, align=center, minimum height=2.5cm] (eurostat) at (4,0) {
+                \textbf{Eurostat}\\
+                \small{Energy Database}\\[0.4cm]
+                \footnotesize{Oficjalny urząd}\\
+                \footnotesize{statystyczny}\\
+                \footnotesize{Unii Europejskiej}
+            };
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{itemize}
+        \item Wszystkie źródła zapewniają oficjalne, zweryfikowane dane instytucjonalne
+        \item Dane pochodzą z różnych poziomów: krajowego, europejskiego i globalnego
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Zakres i charakterystyka danych}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=false, sep=10pt]{block body}
+                \textbf{\large Źródła}
+                \vspace{0.3cm}
+                
+                    \begin{tabular}{@{}>{\color{renewable}}l @{\hspace{0.3cm}} p{10cm}@{}}
+                            \faIcon{industry} & \textbf{PSE} - struktura energetyczna \newline kraju \\[0.3cm]
+                            \faIcon{globe} & \textbf{EDGAR} - emisje CO\textsubscript{2} \newline per capita \\[0.3cm]
+                            \faIcon{chart-line} & \textbf{Eurostat} - ceny energii, \newline udział OZE i   energii \newline nuklearnej, udział importów \newline w wykorzystanej energii \newline państw europejskich \\[0.3cm]
+                    \end{tabular}
+
+            \end{beamercolorbox}
+        \end{column}
+        
+\begin{column}{0.48\textwidth}
+    \begin{beamercolorbox}[rounded=true, shadow=false, sep=5pt]{block body}
+        \textbf{\large Parametry Analizy}
+        \vspace{0.1cm}
+        
+        \begin{tikzpicture}
+            \node[draw=none, fill=renewable!10, rounded corners, 
+                  text width=\linewidth-20pt, align=center, anchor=north] (box1) at (0,0) {
+                \begin{tabular}{@{}c@{}}
+                    \textbf{23} przeanalizowane raporty
+                \end{tabular}
+            };
+
+            \node[draw=none, fill=renewable!10, rounded corners, 
+                  text width=\linewidth-20pt, align=center, anchor=north] (box2) at (0,-1.) {
+                \begin{tabular}{@{}c@{}}
+                    \textbf{27} krajów europejskich
+                \end{tabular}
+            };
+
+            \node[draw=none, fill=renewable!10, rounded corners, 
+                  text width=\linewidth-20pt, align=center, anchor=north] (box3) at (0,-2) {
+                \begin{tabular}{@{}c@{}}
+                    \textbf{2004--2024} zakres czasowy
+                \end{tabular}
+            };
+
+            \node[draw=none, fill=renewable!10, rounded corners, 
+                  text width=\linewidth-20pt, align=center, anchor=north] (box4) at (0,-3) {
+                \begin{tabular}{@{}c@{}}
+                    \textbf{284} przeanalizowane rekordy
+                \end{tabular}
+            };
+
+            \node[draw=none, fill=renewable!10, rounded corners, 
+                  text width=\linewidth-20pt, align=center, anchor=north] (box5) at (0,-4) {
+                \begin{tabular}{@{}c@{}}
+                    \textbf{10} wykorzystanych cech
+                \end{tabular}
+            };
+        \end{tikzpicture}
+    \end{beamercolorbox}
+\end{column}
+
+    \end{columns}
+\end{frame}

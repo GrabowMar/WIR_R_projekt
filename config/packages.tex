@@ -1,0 +1,66 @@
+%% Additional Package Loading
+% This file contains packages not loaded in main.tex
+% ============================================================================
+
+% Additional utilities not in main
+\usepackage{xspace}          % Smart space after commands
+\usepackage{enumitem}        % Customized enumerate environments (Replaces 'enumerate')
+\usepackage{csquotes}        % Context sensitive quotation
+
+% Additional graphics packages
+\usepackage{rotating}        % Rotate content
+\usepackage{wrapfig}         % Wrap text around figures
+\usepackage{caption}         % Enhanced captions
+
+% For animations (if needed)
+\usepackage{animate}         % Animations in PDF
+\usepackage{multimedia}      % Multimedia content
+
+% For better algorithms
+\usepackage{algorithm}       % Algorithm environment
+\usepackage{algpseudocode}   % Pseudocode
+
+% Chemistry formulas (if needed)
+% \usepackage{chemformula}   % Chemical formulas
+% \usepackage{chemfig}       % Chemical structures
+
+% Enhanced referencing
+\usepackage{cleveref}        % Clever references
+
+% For glossaries and acronyms
+% \usepackage[acronym]{glossaries}
+% \makeglossaries
+
+% Additional math packages
+\usepackage{bm}              % Bold math symbols
+\usepackage{cancel}          % Strike through math
+
+% Data visualization specific
+\usepackage{datatool}        % Database operations
+\usepackage{dataplot}        % Data plotting
+
+% Version control integration
+% \usepackage{gitinfo2}      % Git version info
+
+% ============================================================================
+% Package configurations that couldn't go in main.tex
+% ============================================================================
+
+% Configure enumitem package for global enumerate styles
+\setlist[enumerate,1]{label=\arabic*.}  % First level: 1., 2., 3.
+\setlist[enumerate,2]{label=\alph*)}    % Second level: a), b), c)
+\setlist[enumerate,3]{label=\roman*.}   % Third level: i., ii., iii.
+
+% Configure caption package
+\captionsetup{
+    font=footnotesize,
+    labelfont=bf,
+    format=plain,
+    justification=centering
+}
+
+% Configure cleveref
+\crefname{figure}{rys.}{rys.}
+\crefname{table}{tab.}{tab.}
+\crefname{equation}{równ.}{równ.}
+\crefname{section}{rozdz.}{rozdz.}
