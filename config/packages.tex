@@ -1,57 +1,79 @@
-%% Additional Package Loading
-% This file contains packages not loaded in main.tex
+%% Package Loading and Configuration
+% ============================================================================
+% This file contains all package loading and setup for the presentation.
 % ============================================================================
 
-% Additional utilities not in main
-\usepackage{xspace}          % Smart space after commands
-\usepackage{enumerate}       % Customized enumerate environments
-\usepackage{csquotes}        % Context sensitive quotation
-
-% Additional graphics packages
-\usepackage{rotating}        % Rotate content
-\usepackage{wrapfig}         % Wrap text around figures
-\usepackage{caption}         % Enhanced captions
-
-% For animations (if needed)
-\usepackage{animate}         % Animations in PDF
-\usepackage{multimedia}      % Multimedia content
-
-% For better algorithms
-\usepackage{algorithm}       % Algorithm environment
-\usepackage{algpseudocode}   % Pseudocode
-
-% Chemistry formulas (if needed)
-% \usepackage{chemformula}   % Chemical formulas
-% \usepackage{chemfig}       % Chemical structures
-
-% Enhanced referencing
-\usepackage{cleveref}        % Clever references
-
-% For glossaries and acronyms
-% \usepackage[acronym]{glossaries}
-% \makeglossaries
-
-% Additional math packages
-\usepackage{bm}              % Bold math symbols
-\usepackage{cancel}          % Strike through math
-
-% Data visualization specific
-\usepackage{datatool}        % Database operations
-\usepackage{dataplot}        % Data plotting
-
-% Version control integration
-% \usepackage{gitinfo2}      % Git version info
+% ============================================================================
+% Error Handling
+% ============================================================================
+\usepackage{silence}
+\WarningFilter{biblatex}{Patching footnotes failed}
+\WarningFilter{hyperref}{Token not allowed in a PDF string}
 
 % ============================================================================
-% Package configurations that couldn't go in main.tex
+% Core Packages
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+% ============================================================================
+% Math Packages
+% ============================================================================
+\usepackage{amsmath, amssymb, amsfonts, mathtools}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage{cancel}
+
+% ============================================================================
+% Graphics, Figures, and Tables
+% ============================================================================
+\usepackage{graphicx, svg, adjustbox, subcaption, rotating, wrapfig, caption}
+\usepackage{booktabs, multirow, makecell, longtable, array}
+
+% ============================================================================
+% TikZ and PGF for Data Visualization
+% ============================================================================
+\usepackage{tikz, pgfplots, pgf-pie}
+\usepackage{datatool, dataplot}
+
+% ============================================================================
+% Utilities and Other Packages
+% ============================================================================
+\usepackage{xparse, etoolbox, ifthen, calc}
+\usepackage{xspace, csquotes}
+\usepackage{pifont, fontawesome5}
+\usepackage{animate, multimedia}
+\usepackage{algorithm, algpseudocode}
+\usepackage{listings, minted}
+\usepackage{tcolorbox} % The theme loads this, but we ensure it's here
+
+% ============================================================================
+% Referencing and Hyperlinks (load last)
+% ============================================================================
+\usepackage{cleveref}
+\usepackage{hyperref}
+
+% ============================================================================
+% Package Configurations
 % ============================================================================
 
-% Configure enumerate package
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumii}{\alph{enumii})}
-\renewcommand{\labelenumiii}{\roman{enumiii}.}
+% TikZ, PGFPlots, and tcolorbox
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{
+    shapes, arrows, arrows.meta, positioning, patterns, calc,
+    decorations.pathreplacing, shapes.geometric, backgrounds, fit, shadows,
+    mindmap, trees, matrix, chains, scopes
+}
+% The theme loads 'skins', we add what else is needed.
+\tcbuselibrary{breakable,poster,raster} 
 
-% Configure caption package
+% Table column types
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Captions
 \captionsetup{
     font=footnotesize,
     labelfont=bf,
@@ -59,8 +81,51 @@
     justification=centering
 }
 
-% Configure cleveref
+% Listings
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\color{blue!70!black}\bfseries,
+    commentstyle=\color{green!50!black}\itshape,
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+}
+\lstdefinestyle{python}{
+    language=Python,
+    morekeywords={as,None,self,True,False,yield},
+}
+
+% Cleveref
 \crefname{figure}{rys.}{rys.}
 \crefname{table}{tab.}{tab.}
 \crefname{equation}{równ.}{równ.}
 \crefname{section}{rozdz.}{rozdz.}
+
+% Hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    filecolor=green!50!black,
+    urlcolor=blue!80!black,
+    citecolor=red!50!black,
+    pdftitle={Wizualizacja danych energetycznych},
+    pdfauthor={Bartosz Wojas \& Marcin Grabowski},
+    pdfsubject={Energetyka oraz wpływ OZE w Polsce i w Europie},
+    pdfkeywords={energia, OZE, Polska, Europa, wizualizacja danych},
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfpagemode=FullScreen,
+}

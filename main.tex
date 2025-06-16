@@ -11,187 +11,28 @@
 ]{beamer}
 
 % ============================================================================
-% Error Handling and Compatibility
+% Configuration Files and Core Setup
 % ============================================================================
-\usepackage{silence}  % Suppress specific warnings
-\WarningFilter{biblatex}{Patching footnotes failed}
-\WarningFilter{hyperref}{Token not allowed in a PDF string}
-
-% ============================================================================
-% Configuration Files
-% ============================================================================
-% Load configuration files first
+% Load basic setup, colors, the theme, and all packages
 \input{config/document_setup}
-
-% ============================================================================
-% Core Packages (Load before theme)
-% ============================================================================
-% Character encoding and fonts
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[polish]{babel}  % Polish language support
-
-% Mathematics
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathtools}  % Enhanced math commands
-\usepackage{siunitx}    % SI units
-
-% ============================================================================
-% Load Beamer Theme
-% ============================================================================
-\usetheme{Arguelles}
-
-% ============================================================================
-% Load Additional Packages from Config
-% ============================================================================
-\input{config/packages}
 \input{config/colors}
+\usetheme{Arguelles}
+\input{config/packages} % All packages and their configurations are here
 
 % ============================================================================
-% Additional Robust Packages
+% Custom Project-Specific Settings
 % ============================================================================
-% Enhanced functionality
-\usepackage{xparse}      % Better command definitions
-\usepackage{etoolbox}    % Programming tools
-\usepackage{ifthen}      % Conditional statements
-\usepackage{calc}        % Calculations in LaTeX
-
-% Better graphics handling
-\usepackage{graphicx}
-\usepackage{svg}         % Include SVG files
-\usepackage{adjustbox}   % Adjust box sizes
-\usepackage{subcaption}  % Subfigures and subcaptions
-
-% Enhanced tables
-\usepackage{booktabs}    % Professional tables
-\usepackage{multirow}    % Multi-row cells
-\usepackage{makecell}    % Better cell formatting
-\usepackage{longtable}   % Tables spanning multiple pages
-\usepackage{array}       % Enhanced column types
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-
-% TikZ and PGF
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{pgf-pie}
-\pgfplotsset{compat=1.18}
-
-% Load TikZ libraries
-\usetikzlibrary{
-    shapes,
-    arrows,
-    arrows.meta,
-    positioning,
-    patterns,
-    calc,
-    decorations.pathreplacing,
-    shapes.geometric,
-    backgrounds,
-    fit,
-    shadows,
-    mindmap,
-    trees,
-    matrix,
-    chains,
-    scopes
-}
-
-% Enhanced boxes
-\usepackage[most]{tcolorbox}
-\tcbuselibrary{skins,breakable,poster,raster}
-
-% Icons and symbols
-\usepackage{fontawesome5}
-\usepackage{pifont}      % Additional symbols
-
-% Bibliography (choose one)
-% \usepackage[backend=biber,style=numeric-comp]{biblatex}
-% \addbibresource{bibliography.bib}
-
-% Code listings with syntax highlighting
-\usepackage{listings}
-\usepackage{minted}      % Better syntax highlighting (requires --shell-escape)
-
-% ============================================================================
-% Hyperref Setup (load last)
-% ============================================================================
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue!50!black,
-    filecolor=green!50!black,
-    urlcolor=blue!80!black,
-    citecolor=red!50!black,
-    pdftitle={Wizualizacja danych energetycznych},
-    pdfauthor={Bartosz Wojas \& Marcin Grabowski},
-    pdfsubject={Energetyka oraz wpływ OZE w Polsce i w Europie},
-    pdfkeywords={energia, OZE, Polska, Europa, wizualizacja danych},
-    bookmarks=true,
-    bookmarksopen=true,
-    bookmarksnumbered=true,
-    pdfpagemode=FullScreen,  % Open in full screen mode
-}
-
-% ============================================================================
-% Custom Settings and Configurations
-% ============================================================================
-% Load metadata
 \input{config/metadata}
-
-% Load custom commands
 \input{config/custom_commands}
-
-% Load TikZ styles
 \input{config/tikz_styles}
-
-% ============================================================================
-% Listings Configuration
-% ============================================================================
-\lstset{
-    basicstyle=\ttfamily\small,
-    breaklines=true,
-    breakatwhitespace=true,
-    frame=single,
-    backgroundcolor=\color{gray!10},
-    keywordstyle=\color{blue!70!black}\bfseries,
-    commentstyle=\color{green!50!black}\itshape,
-    stringstyle=\color{red!70!black},
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    stepnumber=1,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=4,
-    captionpos=b,
-    escapeinside={(*@}{@*)},  % For LaTeX code in listings
-}
-
-% Python style
-\lstdefinestyle{python}{
-    language=Python,
-    morekeywords={as,None,self,True,False,yield},
-}
 
 % ============================================================================
 % Beamer Specific Settings
 % ============================================================================
-% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
-
-% Add page numbers to all frames
 \setbeamertemplate{footline}[frame number]
-
-% Set alert block colors
 \setbeamercolor{block title alerted}{fg=white,bg=red!70!black}
 \setbeamercolor{block body alerted}{bg=red!10}
-
-% Set example block colors
 \setbeamercolor{block title example}{fg=white,bg=green!70!black}
 \setbeamercolor{block body example}{bg=green!10}
 
@@ -201,7 +42,7 @@
 % Command to include images with automatic width adjustment
 \newcommand{\includefullimage}[2][]{%
     \begin{center}
-        \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio,#1]{#2}
+     \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio,#1]{#2}
     \end{center}
 }
 
@@ -221,7 +62,7 @@
             \begin{minipage}{0.7\textwidth}
                 \centering
                 \vspace{2cm}
-                \Large\textcolor{red}{Missing Figure}\\
+             \Large\textcolor{red}{Missing Figure}\\
                 \normalsize\texttt{#1}
                 \vspace{2cm}
             \end{minipage}
@@ -252,7 +93,7 @@
 % ============================================================================
 % Use \includesection command with error handling
 \IfFileExists{sections/01_Cele prezentacji.tex}{%
-    \includesection{01_Cele prezentacji}%
+   \includesection{01_Cele prezentacji}%
 }{%
     \section{Cele prezentacji}
     \begin{frame}{Cele prezentacji}
