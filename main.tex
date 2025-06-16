@@ -1,51 +1,64 @@
 % ============================================================================
 % Document Class and Basic Setup
 % ============================================================================
+% Defines the document type as a 16:9 widescreen beamer presentation
 \documentclass[
-    compress,           % Compress navigation bar
-    12pt,               % Base font size
-    aspectratio=169,    % 16:9 widescreen format
-    xcolor=table,       % Enable table coloring
-    % To show frame numbers in the footer, add the 'frameno' option here, e.g.:
+    compress,          % Compresses the navigation bar for a cleaner look
+    12pt,              % Sets the base font size to 12 points
+    aspectratio=169,     % Sets the slide aspect ratio to 16:9 (widescreen)
+    xcolor=table,      % Enables advanced color options for tables
+    % To show frame numbers, uncomment the following line:
     % frameno
 ]{beamer}
 
 % ============================================================================
 % Configuration Files and Core Setup
 % ============================================================================
+
 % --- Core Setup ---
-% Path setup for sub-folders
+% Loads main document settings (e.g., fonts, hyphenation)
 \input{config/document_setup}
-% Load all required LaTeX packages
+% Loads all necessary LaTeX packages for the presentation
 \input{config/packages}
 
 % --- Theme and Appearance ---
-% Load main Arguelles theme and all its components
+% CORRECTED VERSION:
+% This prepends the local 'theme/' folder to LaTeX's input search path.
+% It uses \edef to prevent the infinite loop that caused the capacity error.
+\makeatletter
+\edef\input@path{{\string./theme/}\input@path}
+\makeatother
+
+% Now, LaTeX can find and load the 'Arguelles' theme from your local directory.
 \usetheme{Arguelles}
-% Load project-specific colors (e.g., for charts)
+
+% Loads project-specific color definitions (e.g., for charts and graphs)
 \input{config/colors}
 
 
 % --- Document Content Setup ---
-% Load presentation metadata (title, author, etc.)
+% Loads presentation metadata (title, subtitle, author, date, etc.)
 \input{config/metadata}
-% Load custom helper commands for this document
+% Loads custom commands and environments for cleaner code in the main file
 \input{config/custom_commands}
 
 % ============================================================================
-% Document Content
+%                           START OF DOCUMENT
 % ============================================================================
 \begin{document}
 
 % ============================================================================
 % Frontmatter
 % ============================================================================
-% Title page
-\begin{frame}[plain,noframenumbering]
+
+% Display the title page using metadata from 'config/metadata.tex'
+% The 'plain' option removes beamer's header and footer for a clean look
+\begin{frame}[plain, noframenumbering]
     \titlepage
 \end{frame}
 
-% Table of contents with current section highlighting
+% Display the table of contents
+% 'currentsection' highlights the current section in the table of contents
 \begin{frame}{Plan prezentacji}
     \tableofcontents[currentsection]
 \end{frame}
@@ -53,7 +66,9 @@
 % ============================================================================
 % Main Content Sections
 % ============================================================================
-% Use \includesection command (defined in custom_commands.tex) for all sections
+
+% Each section is included from its own .tex file using a custom command.
+% This keeps the main file organized and easy to manage.
 \includesection{01_Cele prezentacji}
 \includesection{02_Dane statystyczne}
 \includesection{03_Wykorzystane narzędzia i biblioteki}
@@ -63,12 +78,16 @@
 \includesection{07_Podziękowania}
 
 % ============================================================================
-% Appendix (if needed)
+% Appendix (Optional)
 % ============================================================================
 \appendix
-% Additional slides can go here
+% You can place additional, non-essential slides here.
+% For example:
+% \begin{frame}{Dodatkowe dane}
+%     Content for the appendix...
+% \end{frame}
 
 % ============================================================================
-% End of Document
+%                            END OF DOCUMENT
 % ============================================================================
 \end{document}
