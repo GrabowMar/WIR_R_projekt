@@ -1,74 +1,36 @@
-% Energy Data Visualization Presentation
-% Created with Overleaf LaTeX Presentation Generator
 % ============================================================================
 % Document Class and Basic Setup
 % ============================================================================
 \documentclass[
     compress,           % Compress navigation bar
-    12pt,              % Base font size
-    aspectratio=169,   % 16:9 widescreen format
-    xcolor=table       % Enable table coloring
+    12pt,               % Base font size
+    aspectratio=169,    % 16:9 widescreen format
+    xcolor=table,       % Enable table coloring
+    % To show frame numbers in the footer, add the 'frameno' option here, e.g.:
+    % frameno
 ]{beamer}
 
 % ============================================================================
 % Configuration Files and Core Setup
 % ============================================================================
-% Load basic setup, colors, the theme, and all packages
+% --- Core Setup ---
+% Path setup for sub-folders
 \input{config/document_setup}
-\input{config/colors}
+% Load all required LaTeX packages
+\input{config/packages}
+
+% --- Theme and Appearance ---
+% Load main Arguelles theme and all its components
 \usetheme{Arguelles}
-\input{config/packages} % All packages and their configurations are here
+% Load project-specific colors (e.g., for charts)
+\input{config/colors}
 
-% ============================================================================
-% Custom Project-Specific Settings
-% ============================================================================
+
+% --- Document Content Setup ---
+% Load presentation metadata (title, author, etc.)
 \input{config/metadata}
+% Load custom helper commands for this document
 \input{config/custom_commands}
-\input{config/tikz_styles}
-
-% ============================================================================
-% Beamer Specific Settings
-% ============================================================================
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamercolor{block title alerted}{fg=white,bg=red!70!black}
-\setbeamercolor{block body alerted}{bg=red!10}
-\setbeamercolor{block title example}{fg=white,bg=green!70!black}
-\setbeamercolor{block body example}{bg=green!10}
-
-% ============================================================================
-% Utility Commands
-% ============================================================================
-% Command to include images with automatic width adjustment
-\newcommand{\includefullimage}[2][]{%
-    \begin{center}
-     \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio,#1]{#2}
-    \end{center}
-}
-
-% Command for source citations on frames
-\newcommand{\source}[1]{%
-    \vfill
-    \tiny\textcolor{gray}{Źródło: #1}
-}
-
-% ============================================================================
-% Error Recovery Commands
-% ============================================================================
-% Provide fallback for missing images
-\newcommand{\missingfigure}[1]{%
-    \begin{center}
-        \fbox{%
-            \begin{minipage}{0.7\textwidth}
-                \centering
-                \vspace{2cm}
-             \Large\textcolor{red}{Missing Figure}\\
-                \normalsize\texttt{#1}
-                \vspace{2cm}
-            \end{minipage}
-        }
-    \end{center}
-}
 
 % ============================================================================
 % Document Content
@@ -91,69 +53,14 @@
 % ============================================================================
 % Main Content Sections
 % ============================================================================
-% Use \includesection command with error handling
-\IfFileExists{sections/01_Cele prezentacji.tex}{%
-   \includesection{01_Cele prezentacji}%
-}{%
-    \section{Cele prezentacji}
-    \begin{frame}{Cele prezentacji}
-        \missingfigure{sections/01\_Cele prezentacji.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/02_Dane statystyczne.tex}{%
-    \includesection{02_Dane statystyczne}%
-}{%
-    \section{Dane statystyczne}
-    \begin{frame}{Dane statystyczne}
-        \missingfigure{sections/02\_Dane statystyczne.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/03_Wykorzystane narzędzia i biblioteki.tex}{%
-    \includesection{03_Wykorzystane narzędzia i biblioteki}%
-}{%
-    \section{Wykorzystane narzędzia i biblioteki}
-    \begin{frame}{Wykorzystane narzędzia i biblioteki}
-        \missingfigure{sections/03\_Wykorzystane narzędzia i biblioteki.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/04_Przedstawienie danych.tex}{%
-    \includesection{04_Przedstawienie danych}%
-}{%
-    \section{Przedstawienie danych}
-    \begin{frame}{Przedstawienie danych}
-        \missingfigure{sections/04\_Przedstawienie danych.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/05_Wnioski.tex}{%
-    \includesection{05_Wnioski}%
-}{%
-    \section{Wnioski}
-    \begin{frame}{Wnioski}
-        \missingfigure{sections/05\_Wnioski.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/06_Literatura.tex}{%
-    \includesection{06_Literatura}%
-}{%
-    \section{Literatura}
-    \begin{frame}{Literatura}
-        \missingfigure{sections/06\_Literatura.tex}
-    \end{frame}
-}
-
-\IfFileExists{sections/07_Podziękowania.tex}{%
-    \includesection{07_Podziękowania}%
-}{%
-    \section{Podziękowania}
-    \begin{frame}{Podziękowania}
-        \missingfigure{sections/07\_Podziękowania.tex}
-    \end{frame}
-}
+% Use \includesection command (defined in custom_commands.tex) for all sections
+\includesection{01_Cele prezentacji}
+\includesection{02_Dane statystyczne}
+\includesection{03_Wykorzystane narzędzia i biblioteki}
+\includesection{04_Przedstawienie danych}
+\includesection{05_Wnioski}
+\includesection{06_Literatura}
+\includesection{07_Podziękowania}
 
 % ============================================================================
 % Appendix (if needed)
