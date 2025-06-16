@@ -1,47 +1,82 @@
+% ==============================================================================
+% WAŻNE: Aby cienie działały poprawnie, upewnij się, że biblioteka 'shadows'
+% jest dodana do pliku 'config/packages.tex'.
+%
+% Znajdź tę linię w 'config/packages.tex':
+% \usetikzlibrary{shapes,arrows,positioning,patterns,calc,decorations.pathreplacing}
+% 
+% I dodaj do niej 'shadows', w ten sposób:
+% \usetikzlibrary{shapes,arrows,positioning,patterns,calc,decorations.pathreplacing,shadows}
+% ==============================================================================
+
 % Wykorzystane narzędzia i biblioteki
 \section{Wykorzystane narzędzia i biblioteki}
 
 \begin{frame}{Metodologia pracy z danymi}
-    \begin{enumerate}
-        \item \highlight{Pozyskanie danych} z oficjalnych źródeł europejskich i krajowych
-        \vspace{0.3em}
-        
-        \item \highlight{Przetwarzanie i analiza} za pomocą narzędzi programistycznych Python
-        \vspace{0.3em}
-        
-        \item \highlight{Wizualizacja wyników} w postaci wykresów, map i tabel porównawczych
-        \vspace{0.3em}
-        
-        \item \highlight{Prezentacja wyników} w profesjonalnym układzie LaTeX
-    \end{enumerate}
+    \centering
+    \begin{tikzpicture}[
+        % POPRAWKA: Użycie node distance jako domyślnej odległości upraszcza kod
+        % i czyni go bardziej odpornym na błędy parsowania.
+        node distance=0.7cm,
+        step/.style={
+            rectangle, 
+            rounded corners, 
+            draw=coalplant, 
+            fill=renewable!10, 
+            text width=0.8\textwidth, 
+            minimum height=1.5cm, 
+            text centered,
+            drop shadow
+        },
+        arrow/.style={
+            ->, 
+            ultra thick, 
+            color=renewable,
+            shorten >=2pt,
+            shorten <=2pt
+        }
+    ]
+        % Zdefiniowanie kroków metodologii
+        \node (step1) [step] {\highlight{1. Pozyskanie danych} \\ \small z oficjalnych źródeł europejskich i krajowych};
+        % POPRAWKA: Użycie składni 'below=of step1' jest bardziej jednoznaczne
+        % i stabilniejsze niż jawne podawanie odległości przy każdym węźle.
+        \node (step2) [step, below=of step1] {\highlight{2. Przetwarzanie i analiza} \\ \small za pomocą narzędzi programistycznych w języku Python};
+        \node (step3) [step, below=of step2] {\highlight{3. Wizualizacja wyników} \\ \small w postaci wykresów, map i tabel porównawczych};
+        \node (step4) [step, below=of step3] {\highlight{4. Prezentacja wyników} \\ \small w profesjonalnym układzie przy użyciu LaTeX i Beamer};
+
+        % Połączenie kroków strzałkami
+        \draw [arrow] (step1.south) -- (step2.north);
+        \draw [arrow] (step2.south) -- (step3.north);
+        \draw [arrow] (step3.south) -- (step4.north);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Główne narzędzia analizy danych}
-    \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
-            \begin{beamercolorbox}[rounded=true, shadow=false, sep=10pt]{block body}
-                \textbf{\large Python - analiza danych}
+    % POPRAWKA: Zmniejszenie szerokości kolumn (np. do 0.49\textwidth)
+    % daje więcej przestrzeni i może zapobiec błędom 'Overfull hbox'.
+    \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.49\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=true, sep=10pt]{block body}
+                \textbf{\large \faIcon{python}\ Python -- Analiza Danych}
                 \vspace{0.3cm}
-                
                 \begin{itemize}
-                    \item \textbf{pandas} -- manipulacja danych tabelarycznych
-                    \item \textbf{numpy} -- obliczenia numeryczne i statystyczne
-                    \item \textbf{matplotlib} -- tworzenie wykresów i wizualizacji
-                    \item \textbf{cartopy} -- mapy geograficzne i projekcje
+                    \item[\faIcon{table}] \textbf{pandas} -- manipulacja i analiza danych tabelarycznych
+                    \item[\faIcon{calculator}] \textbf{numpy} -- zaawansowane obliczenia numeryczne
+                    \item[\faIcon{chart-bar}] \textbf{matplotlib} -- tworzenie statycznych i interaktywnych wizualizacji
+                    \item[\faIcon{globe-europe}] \textbf{cartopy} -- generowanie map i projekcji geograficznych
                 \end{itemize}
             \end{beamercolorbox}
         \end{column}
         
-        \begin{column}{0.48\textwidth}
-            \begin{beamercolorbox}[rounded=true, shadow=false, sep=10pt]{block body}
-                \textbf{\large LaTeX - skład dokumentów}
+        \begin{column}{0.49\textwidth}
+            \begin{beamercolorbox}[rounded=true, shadow=true, sep=10pt]{block body}
+                \textbf{\large \faIcon{file-code}\ LaTeX -- Skład Dokumentów}
                 \vspace{0.3cm}
-                
                 \begin{itemize}
-                    \item \textbf{beamer} -- prezentacje naukowe
-                    \item \textbf{tikz} -- diagramy i schematy
-                    \item \textbf{booktabs} -- profesjonalne tabele
-                    \item \textbf{motyw Argüelles} -- nowoczesny design
+                    \item[\faIcon{desktop}] \textbf{beamer} -- tworzenie profesjonalnych prezentacji
+                    \item[\faIcon{pen-fancy}] \textbf{tikz} -- rysowanie diagramów i grafiki wektorowej
+                    \item[\faIcon{th-list}] \textbf{booktabs} -- skład estetycznych i czytelnych tabel
+                    \item[\faIcon{palette}] \textbf{motyw Argüelles} -- nowoczesny i minimalistyczny design
                 \end{itemize}
             \end{beamercolorbox}
         \end{column}
@@ -50,93 +85,95 @@
 
 \begin{frame}{Przepływ pracy -- od danych do prezentacji}
     \begin{center}
-        \begin{tikzpicture}
-            % Data sources
-            \node[draw, rounded corners, fill=renewable!20, text width=2.5cm, align=center, minimum height=1.2cm] (data) at (0,0) {
-                \textbf{Źródła danych}\\
-                \footnotesize Eurostat, PSE, EDGAR
+        \begin{tikzpicture}[
+            node distance=0.2cm,
+            block/.style={
+                rectangle, rounded corners, draw=coalplant,
+                text width=2.8cm, align=center, minimum height=1.5cm,
+                font=\bfseries, drop shadow
+            },
+            arrow/.style={
+                ->, ultra thick, shorten >=3pt, shorten <=3pt,
+                color=renewable
+            }
+        ]
+            % Zdefiniowanie etapów przepływu pracy
+            \node[block, fill=renewable!20] (data) at (0,0) {
+                Źródła Danych \\ \footnotesize\normalfont Eurostat, PSE, EDGAR
             };
-            
-            % Processing
-            \node[draw, rounded corners, fill=blue!20, text width=2.5cm, align=center, minimum height=1.2cm] (process) at (4,0) {
-                \textbf{Przetwarzanie}\\
-                \footnotesize Python, pandas
+            % POPRAWKA: Zmniejszenie odległości między blokami, aby cały diagram
+            % zmieścił się w szerokości slajdu.
+            \node[block, fill=gasplant!20, right=0.6cm of data] (process) {
+                Przetwarzanie \\ \footnotesize\normalfont Python, pandas
             };
-            
-            % Visualization
-            \node[draw, rounded corners, fill=orange!20, text width=2.5cm, align=center, minimum height=1.2cm] (viz) at (8,0) {
-                \textbf{Wizualizacja}\\
-                \footnotesize matplotlib, cartopy
+            \node[block, fill=solar!30, right=0.6cm of process] (viz) {
+                Wizualizacja \\ \footnotesize\normalfont matplotlib, cartopy
             };
-            
-            % Output
-            \node[draw, rounded corners, fill=purple!20, text width=2.5cm, align=center, minimum height=1.2cm] (output) at (12,0) {
-                \textbf{Prezentacja}\\
-                \footnotesize LaTeX, beamer
+            \node[block, fill=coalplant!20, right=0.6cm of viz] (output) {
+                Prezentacja \\ \footnotesize\normalfont LaTeX, beamer
             };
+
+            % Narysowanie strzałek między etapami
+            \draw[arrow] (data) -- (process);
+            \draw[arrow] (process) -- (viz);
+            \draw[arrow] (viz) -- (output);
             
-            % Arrows
-            \draw[->, thick, renewable] (data) -- (process);
-            \draw[->, thick, renewable] (process) -- (viz);
-            \draw[->, thick, renewable] (viz) -- (output);
-            
-            % Labels
-            \node[below=0.5cm of data, font=\tiny] {CSV, JSON};
-            \node[below=0.5cm of process, font=\tiny] {analiza, czyszczenie};
-            \node[below=0.5cm of viz, font=\tiny] {wykresy, mapy};
-            \node[below=0.5cm of output, font=\tiny] {PDF};
+            % Dodanie etykiet pod każdym etapem
+            \node[below=0.3cm of data, font=\small\itshape, text=coalplant] {CSV, JSON};
+            \node[below=0.3cm of process, font=\small\itshape, text=coalplant] {Analiza, czyszczenie};
+            \node[below=0.3cm of viz, font=\small\itshape, text=coalplant] {Wykresy, mapy};
+            \node[below=0.3cm of output, font=\small\itshape, text=coalplant] {PDF};
         \end{tikzpicture}
     \end{center}
     
     \vspace{0.5cm}
     
     \begin{itemize}
-        \item Proces w pełni automatyczny i reprodukowalny
-        \item Kontrola wersji za pomocą Git i GitHub
-        \item Współpraca zespołowa przez Overleaf
+        \item Proces w pełni \highlight{automatyczny i reprodukowalny}
+        \item Kontrola wersji za pomocą \highlight{Git i GitHub}
+        \item Współpraca zespołowa przez \highlight{Overleaf}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Wykorzystane biblioteki Python}
+
     \begin{table}
-        \centering
-        \footnotesize
-        \begin{tabular}{llp{6cm}}
+        \rowcolors{2}{coalplant!10}{white}
+
+        \begin{tabularx}{\textwidth}{l l >{\raggedright\arraybackslash}X}
             \toprule
             \textbf{Biblioteka} & \textbf{Wersja} & \textbf{Zastosowanie} \\
             \midrule
             pandas & 2.0+ & Manipulacja danymi tabelarycznymi, analiza szeregów czasowych \\
             numpy & 1.24+ & Obliczenia numeryczne, operacje na macierzach \\
             matplotlib & 3.7+ & Tworzenie wykresów słupkowych, liniowych i kołowych \\
-            cartopy & 0.21+ & Mapy geograficzne, projekcje kartograficzne \\
-            scipy & 1.10+ & Analiza statystyczna, testy korelacji \\
-            pathlib & -- & Zarządzanie ścieżkami plików \\
+            cartopy & 0.21+ & Tworzenie map geograficznych i projekcji kartograficznych \\
+            scipy & 1.10+ & Zaawansowana analiza statystyczna i testy korelacji \\
+            pathlib & -- & Zarządzanie ścieżkami plików w sposób obiektowy \\
             \bottomrule
-        \end{tabular}
-        \caption{Kluczowe biblioteki wykorzystane w projekcie}
+        \end{tabularx}
+        \caption{Kluczowe biblioteki Python wykorzystane w projekcie}
     \end{table}
-    
-    \vspace{0.3cm}
-    
-    \begin{itemize}
-        \item Wszystkie biblioteki w aktualnych wersjach stabilnych
-        \item Kompatybilność z Python 3.9+
-    \end{itemize}
+Wszystkie biblioteki w \highlight{aktualnych wersjach stabilnych}
 \end{frame}
+
 
 \begin{frame}{Środowisko pracy i narzędzia wspomagające}
     \begin{table}[h]
-        \footnotesize
-        \begin{tabular}{lp{8cm}}
+        \centering
+        \rowcolors{2}{coalplant!10}{white}
+        % POPRAWKA: Znacząco zmniejszono szerokość kolumny, aby tabela
+        % na pewno zmieściła się w ramce.
+        \begin{tabular}{l >{\raggedright\arraybackslash}p{7.5cm}}
             \toprule
             \textbf{Kategoria} & \textbf{Narzędzia} \\
             \midrule
-            Edytory kodu & VS Code, Jupyter Lab, PyCharm \\
-            Kontrola wersji & Git, GitHub \\
-            Współpraca & Overleaf (LaTeX), Google Drive \\
-            Środowisko Python & conda, pip, virtual environments \\
-            Asystenci AI & Claude \\
-            Testowanie & pytest, unittest \\
+            \faIcon{code}\ Edytory kodu & VS Code, Jupyter Lab, PyCharm \\
+            \faIcon{code-branch}\ Kontrola wersji & Git, GitHub \\
+            \faIcon{users}\ Współpraca & Overleaf (LaTeX), Google Drive \\
+            \faIcon{python}\ Środowisko Python & conda, pip, virtual environments \\
+            \faIcon{robot}\ Asystenci AI & Claude, GitHub Copilot \\
+            \faIcon{vial}\ Testowanie & pytest, unittest \\
             \bottomrule
         \end{tabular}
     \end{table}
@@ -144,44 +181,19 @@
     \vspace{0.5cm}
     
     \begin{itemize}
-        \item \highlight{Overleaf} umożliwił efektywną współpracę przy tworzeniu prezentacji
-        \item \highlight{Asystenci AI} przyspieszyły proces programowania i debugowania
-        \item \highlight{GitHub} zapewnił pełną kontrolę wersji kodu i danych
+        \item \highlight{Overleaf} umożliwił efektywną współpracę przy tworzeniu prezentacji LaTeX.
+        \item \highlight{Asystenci AI} znacząco przyspieszyli proces programowania i debugowania.
+        \item \highlight{GitHub} zapewnił pełną kontrolę wersji oraz transparentność projektu.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Struktura projektu}
-    \begin{columns}[T]
-        \begin{column}{0.6\textwidth}
-            \begin{itemize}
-                \item \textbf{data/} -- surowe dane z Eurostat, PSE, EDGAR
-                \item \textbf{scripts/} -- skrypty Python do analizy
-                \item \textbf{outputs/} -- wygenerowane wykresy i tabele
-                \item \textbf{presentation/} -- kod LaTeX prezentacji
-                \item \textbf{docs/} -- dokumentacja metodologii
-            \end{itemize}
-        \end{column}
-
-        \begin{column}{0.4\textwidth}
-            \begin{beamercolorbox}[rounded=true, shadow=false, sep=8pt]{block body}
-                \textbf{Statystyki projektu:}
-                \vspace{0.2cm}
-                
-                \begin{tabular}{lr}
-                    Pliki Python: & 12 \\
-                    Linie kodu: & 1,800+ \\
-                    Wykresy: & 15 \\
-                    Tabele: & 8 \\
-                    Slajdy: & 25+ \\
-                \end{tabular}
-            \end{beamercolorbox}
-        \end{column}
-    \end{columns}
+\begin{frame}{Kluczowy skrypt Python: Analiza i wizualizacja danych}
     
-    \vspace{0.3cm}
-    
+    \textbf{Cel i metodologia}
     \begin{itemize}
-        \item Projekt w pełni \highlight{reprodukowalny} -- każdy wynik można odtworzyć
-        \item Kod dostępny w repozytorium GitHub z pełną dokumentacją
+        \item \highlight{Automatyzacja procesu}: Od wczytania danych za pomocą \textbf{pandas}, po generowanie map w \textbf{matplotlib} i \textbf{cartopy}.
+        \item \highlight{Analiza dynamiki}: Obliczanie procentowych zmian w produkcji energii (całkowitej i OZE) w zadanym okresie.
+        \item \highlight{Wizualizacja wyników}: Tworzenie czytelnych map choropletowych Europy, które przedstawiają trendy energetyczne.
     \end{itemize}
+
 \end{frame}

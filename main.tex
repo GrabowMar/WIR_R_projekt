@@ -1,93 +1,203 @@
-% ============================================================================
-% Document Class and Basic Setup
-% ============================================================================
-% Defines the document type as a 16:9 widescreen beamer presentation
+% ==================================
+% ENERGY DATA VISUALIZATION PRESENTATION
+% Authors: Bartosz Wojas & Marcin Grabowski
+% Institution: Uniwersytet Ekonomiczny w Poznaniu
+% ==================================
+
 \documentclass[
-    compress,          % Compresses the navigation bar for a cleaner look
-    12pt,              % Sets the base font size to 12 points
-    aspectratio=169,     % Sets the slide aspect ratio to 16:9 (widescreen)
-    xcolor=table,      % Enables advanced color options for tables
-    % To show frame numbers, uncomment the following line:
-    % frameno
+    12pt,              % Base font size
+    aspectratio=169,   % 16:9 widescreen format
+    compress,          % Compress navigation bar
+    xcolor=table,      % Advanced table coloring
+    t                  % Top-align frame content
 ]{beamer}
 
-% ============================================================================
-% Configuration Files and Core Setup
-% ============================================================================
+% ==================================
+% DEBUGGING CONTROLS
+% ==================================
+% Set to true to enable detailed compilation logging
+\newif\ifdebugmode
+\debugmodefalse  % Change to \debugmodetrue for debugging
 
-% --- Core Setup ---
-% Loads main document settings (e.g., fonts, hyphenation)
-\input{config/document_setup}
-% Loads all necessary LaTeX packages for the presentation
-\input{config/packages}
+\ifdebugmode
+    \typeout{=== DEBUG MODE ENABLED ===}
+\fi
 
-% --- Theme and Appearance ---
-% CORRECTED VERSION:
-% This prepends the local 'theme/' folder to LaTeX's input search path.
-% It uses \edef to prevent the infinite loop that caused the capacity error.
-\makeatletter
-\edef\input@path{{\string./theme/}\input@path}
-\makeatother
+% ==================================
+% CORE PACKAGE LOADING
+% ==================================
 
-% Now, LaTeX can find and load the 'Arguelles' theme from your local directory.
+% Essential encoding and language support
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Mathematics and science
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{siunitx}
+
+% Graphics and visualization
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\pgfplotsset{compat=1.18}
+
+% TikZ libraries
+\usetikzlibrary{
+    shapes,
+    arrows,
+    positioning,
+    patterns,
+    calc,
+    decorations.pathreplacing
+}
+
+% Tables and layout
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage[table]{xcolor}
+
+% Text and references
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{listings}
+
+% Advanced boxes
+\usepackage[skins]{tcolorbox}
+
+% ==================================
+% THEME AND PATH CONFIGURATION
+% ==================================
 \usetheme{Arguelles}
 
-% Loads project-specific color definitions (e.g., for charts and graphs)
+% ==================================
+% PROJECT-SPECIFIC CONFIGURATIONS
+% ==================================
+
+% Load custom color definitions for energy visualization
 \input{config/colors}
 
-
-% --- Document Content Setup ---
-% Loads presentation metadata (title, subtitle, author, date, etc.)
+% Load presentation metadata
 \input{config/metadata}
-% Loads custom commands and environments for cleaner code in the main file
+
+% Load custom commands and macros
 \input{config/custom_commands}
 
-% ============================================================================
-%                           START OF DOCUMENT
-% ============================================================================
+% ==================================
+% PRESENTATION CUSTOMIZATIONS
+% ==================================
+
+% Configure listings for code blocks
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    showstringspaces=false
+}
+
+% Set up proper Polish language support
+\usepackage[polish]{babel}
+
+% ==================================
+% FONT CUSTOMIZATIONS (if theme fonts don't load properly)
+% ==================================
+
+% Fallback font settings - uncomment if Alegreya fonts cause issues
+% \setbeamerfont{title}{series=\bfseries,size=\LARGE}
+% \setbeamerfont{subtitle}{series=\mdseries,size=\Large}
+% \setbeamerfont{frame title}{series=\bfseries,size=\large}
+% \setbeamerfont{author}{series=\bfseries,size=\normalsize}
+
+% ==================================
+% DOCUMENT VERIFICATION
+% ==================================
+
+\AtBeginDocument{%
+    \ifdebugmode
+        \typeout{=== DOCUMENT COMPILATION INFO ===}%
+        \typeout{Theme loaded: \@ifundefined{beamer@theme@name}{UNKNOWN}{\beamer@theme@name}}%
+        \typeout{Current font family: \f@family}%
+        \typeout{Frame title font test: \usebeamerfont{frame title}\f@family/\f@series}%
+        \typeout{=====================================}%
+    \fi
+}
+
+% ==================================
+% DOCUMENT CONTENT
+% ==================================
+
 \begin{document}
 
-% ============================================================================
-% Frontmatter
-% ============================================================================
+% ----------------------------------
+% TITLE AND CONTENTS
+% ----------------------------------
 
-% Display the title page using metadata from 'config/metadata.tex'
-% The 'plain' option removes beamer's header and footer for a clean look
-\begin{frame}[plain, noframenumbering]
+% Title slide
+\begin{frame}[plain,noframenumbering]
     \titlepage
 \end{frame}
 
-% Display the table of contents
-% 'currentsection' highlights the current section in the table of contents
+% Table of contents
 \begin{frame}{Plan prezentacji}
     \tableofcontents[currentsection]
 \end{frame}
 
-% ============================================================================
-% Main Content Sections
-% ============================================================================
+% ----------------------------------
+% MAIN PRESENTATION SECTIONS
+% ----------------------------------
 
-% Each section is included from its own .tex file using a custom command.
-% This keeps the main file organized and easy to manage.
+% Load each section from its dedicated file
+% This modular approach makes the presentation easier to maintain
+
+% Section 1: Project objectives
 \includesection{01_Cele prezentacji}
+
+% Section 2: Statistical data sources
 \includesection{02_Dane statystyczne}
+
+% Section 3: Tools and libraries used
 \includesection{03_Wykorzystane narzędzia i biblioteki}
+
+% Section 4: Data presentation and analysis
 \includesection{04_Przedstawienie danych}
+
+% Section 5: Conclusions and insights
 \includesection{05_Wnioski}
+
+% Section 6: References and bibliography
 \includesection{06_Literatura}
+
+% Section 7: Acknowledgments
 \includesection{07_Podziękowania}
 
-% ============================================================================
-% Appendix (Optional)
-% ============================================================================
+% ----------------------------------
+% APPENDIX (Optional additional content)
+% ----------------------------------
+
 \appendix
-% You can place additional, non-essential slides here.
-% For example:
-% \begin{frame}{Dodatkowe dane}
-%     Content for the appendix...
+
+% Uncomment and add additional slides if needed
+% \begin{frame}{Dodatkowe informacje}
+%     \begin{itemize}
+%         \item Szczegółowe dane techniczne
+%         \item Metodologia obliczeń
+%         \item Dodatkowe źródła
+%     \end{itemize}
 % \end{frame}
 
-% ============================================================================
-%                            END OF DOCUMENT
-% ============================================================================
+% \begin{frame}{Kontakt}
+%     \begin{center}
+%         \Large Pytania i dyskusja
+%         
+%         \vspace{1em}
+%         
+%         \normalsize
+%         Dziękujemy za uwagę!
+%     \end{center}
+% \end{frame}
+
 \end{document}
