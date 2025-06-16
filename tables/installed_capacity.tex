@@ -1,25 +1,26 @@
-% Installed Capacity Table
+% Compact Installed Capacity Table - Version 1
 \begin{table}
     \centering
-    \footnotesize % Reduce font size to make table fit
-    \setlength{\tabcolsep}{5pt} % Reduce column spacing
-    \begin{tabular}{lcr}
+    \tiny % Even smaller font
+    \setlength{\tabcolsep}{3pt} % Further reduce column spacing
+    \begin{tabular}{>{\raggedright\arraybackslash}p{4.2cm}rr}
         \toprule
         \textbf{Typ elektrowni} & \textbf{Moc [MW]} & \textbf{Udział [\%]} \\
         \midrule
-        Elektrownie cieplne oparte na węglu kamiennym & 23,711 & 32.3 \\
-        Elektrownie cieplne oparte na węglu brunatnym & 8,249 & 11.2 \\
+        Węgiel kamienny & 23,711 & 32.3 \\
+        Węgiel brunatny & 8,249 & 11.2 \\
         Elektrownie gazowe & 5,976 & 8.1 \\
         Elektrownie wodne & 2,430 & 3.3 \\
-        \textcolor{renewable}{\textbf{Elektrownie wiatrowe i inne odnawialne}} & 31,823 & 43.2 \\
+        \textcolor{renewable}{\textbf{OZE (wiatr + inne)}} & \textcolor{renewable}{\textbf{31,823}} & \textcolor{renewable}{\textbf{43.2}} \\
         \midrule
-        \textbf{Razem} & \textbf{73,489} & \textbf{100} \\
+        \textbf{Razem} & \textbf{73,489} & \textbf{100.0} \\
         \bottomrule
     \end{tabular}
-    \caption{Moc zainstalowana w podziale na typ elektrowni}
+    \caption{\footnotesize Moc zainstalowana według typu elektrowni}
 \end{table}
-\vspace{-0.5em} % Reduce vertical space between table and list
-    \begin{itemize}
-        \item Farmy wiatrowe oraz instalacje fotowoltaiczne aktualnie stanowią 43.2\% mocy zainstalowanej w polskim systemie elektroenergetycznym.
-        \item Razem stanowią typ elektrowni o największym udziale procentowym w Polsce.
-    \end{itemize}
+
+
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+    \item[\footnotesize\faIcon{leaf}] {\footnotesize OZE stanowią \textbf{43.2\%} całkowitej mocy zainstalowanej}
+    \item[\footnotesize\faIcon{chart-line}] {\footnotesize Największy udział spośród wszystkich typów elektrowni}
+\end{itemize}
