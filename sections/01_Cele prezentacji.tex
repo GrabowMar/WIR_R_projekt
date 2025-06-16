@@ -1,53 +1,25 @@
-\section{Cele prezentacji}
-
 \begin{frame}{Główne cele projektu}
-    \begin{columns}[T, onlytextwidth]
-        % Column 1: Poland's Energy Structure
-        \begin{column}{0.33\textwidth}
-            \begin{tcolorbox}[
-                colback=blue!5,
-                colframe=blue!60!black,
-                boxrule=1pt,
-                title=\large\bfseries\poland Polska,
-                halign=center,
-                valign=top,
-                height=7cm
-            ]
-                \Huge\coalicon\\[0.5em]
-                {\small\highlight{Analiza dynamiki rozwoju} struktury energetycznej kraju.}
-            \end{tcolorbox}
-        \end{column}
+    \renewcommand{\arraystretch}{2.5} % Increase spacing between rows for readability
+    \begin{tabular}{cl}
+        % --- Goal 1: Poland ---
+\Huge \coalicon \hspace{1em} & 
+\begin{minipage}{0.8\textwidth}
+            \textbf{\large Polska} \\
+            \highlight{Analiza dynamiki rozwoju} struktury energetycznej kraju.
+        \end{minipage} \\
 
-        % Column 2: The Impact of RES
-        \begin{column}{0.33\textwidth}
-            \begin{tcolorbox}[
-                colback=renewable!10,
-                colframe=renewable!60!black,
-                boxrule=1pt,
-                title=\large\bfseries\renewableicon Wpływ OZE,
-                halign=center,
-                valign=top,
-                height=7cm
-            ]
-                \Huge\faIcon{euro-sign}\\[0.5em]
-                {\small\highlight{Badanie wpływu OZE} na ceny energii i stabilność systemu.}
-            \end{tcolorbox}
-        \end{column}
+        % --- Goal 2: RES Impact ---
+\Huge \faIcon{euro-sign} \hspace{1em} & 
+\begin{minipage}{0.8\textwidth}
+            \textbf{\large Wpływ OZE} \\
+            \highlight{Badanie wpływu OZE} na ceny energii i stabilność systemu.
+        \end{minipage} \\
 
-        % Column 3: European Comparison
-        \begin{column}{0.33\textwidth}
-            \begin{tcolorbox}[
-                colback=yellow!10,
-                colframe=yellow!60!black,
-                boxrule=1pt,
-                title=\large\bfseries\faIcon{globe-europe} Europa,
-                halign=center,
-                valign=top,
-                height=7cm
-            ]
-                \Huge\faIcon{balance-scale}\\[0.5em]
-                {\small\highlight{Porównanie kosztów i efektywności} polityki energetycznej.}
-            \end{tcolorbox}
-        \end{column}
-    \end{columns}
+        % --- Goal 3: Europe ---
+\Huge \faIcon{balance-scale} \hspace{1em} & 
+\begin{minipage}{0.8\textwidth}
+            \textbf{\large Europa} \\
+            \highlight{Porównanie kosztów i efektywności} polityki energetycznej.
+        \end{minipage} \\
+    \end{tabular}
 \end{frame}
